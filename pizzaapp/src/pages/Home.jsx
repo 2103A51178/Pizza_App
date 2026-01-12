@@ -2,7 +2,7 @@ export default function Home() {
   return (
     <div className="container mt-4">
 
-      {/* HERO SECTION */}
+      
       <div className="text-center mb-5">
         <img
           src="https://thumb9.shutterstock.com/display_pic_with_logo/376831/127528958/stock-photo-delicious-italian-pizza-over-white-127528958.jpg"
@@ -17,7 +17,7 @@ export default function Home() {
 
      
 
-      {/* FEATURES */}
+    
       <div className="row text-center">
         <div className="col-md-4">
           <h4>🍕 Pizza Menu</h4>
