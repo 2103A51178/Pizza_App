@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const ShoppingCart = require("../models/Cart");
 
-// ➕ Add to cart
+
 router.post("/add", async (req, res) => {
   const { pizzaId, name, price, image } = req.body;
 
@@ -30,13 +30,13 @@ router.post("/add", async (req, res) => {
 
 
 
-// 📦 Get cart
+
 router.get("/", async (req, res) => {
   const items = await ShoppingCart.find();
   res.json(items);
 });
 
-// ➕➖ Update quantity
+
 router.put("/:pizzaId", async (req, res) => {
   const { action } = req.body;
 
@@ -50,7 +50,7 @@ router.put("/:pizzaId", async (req, res) => {
   res.json(item);
 });
 
-// ❌ Remove item
+
 router.delete("/:pizzaId", async (req, res) => {
   await ShoppingCart.deleteOne({ pizzaId: req.params.pizzaId });
   res.json({ message: "Item removed" });
