@@ -12,15 +12,14 @@ export default function BuildPizza() {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    // Load pizza details
     axios.get("http://localhost:5000/api/pizzas")
       .then(res => {
         const p = res.data.find(x => x.id === pizzaId);
         setPizza(p);
-        setTotal(p.price); // base price
+        setTotal(p.price); 
       });
 
-    // Load all ingredients
+    
     axios.get("http://localhost:5000/api/ingredients")
       .then(res => setIngredients(res.data));
   }, [pizzaId]);
@@ -40,15 +39,15 @@ export default function BuildPizza() {
 
     try {
       await axios.post("http://localhost:5000/api/shoppingcart/add", {
-        pizzaId: `${pizza.id}-custom-${Date.now()}`, // unique custom pizza
+        pizzaId: `${pizza.id}-custom-${Date.now()}`, 
         name: `${pizza.name} (Customized)`,
         price: total,
         image: pizza.image,
-        ingredients: selected.map(i => i.tname) // store ingredient names
+        ingredients: selected.map(i => i.tname) 
       });
 
       alert("Customized pizza added to cart");
-      navigate("/cart"); // redirect to cart
+      navigate("/cart"); 
     } catch (err) {
       console.error("Add to cart failed", err);
       alert("Failed to add pizza to cart");
